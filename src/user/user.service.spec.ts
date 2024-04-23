@@ -82,18 +82,19 @@ describe('UserService', () => {
 
       const responseMock = {
         status: jest.fn().mockReturnThis(),
-        send: jest.fn(),
+        json: jest.fn(),
       };
 
       (createUserSchema.validate as jest.Mock).mockReturnValue({
-        value: payload,
-        error: null,
+        error: {
+          message: 'email is not allowed to be empty',
+        },
       });
 
       await userService.create(payload, responseMock);
 
       expect(responseMock.status).toHaveBeenCalledWith(400);
-      expect(responseMock.send).toHaveBeenCalledWith({
+      expect(responseMock.json).toHaveBeenCalledWith({
         message: 'email is not allowed to be empty',
       });
     });
