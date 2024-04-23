@@ -9,6 +9,7 @@ import * as fs from 'fs';
 import * as download from 'download';
 import { createUserSchema } from './validator/user.validator';
 import { UserDto } from './dto/user.dto';
+import { getBase64Url } from '../utils/helper';
 
 jest.mock('./validator/user.validator', () => ({
   createUserSchema: {
@@ -186,7 +187,7 @@ describe('UserService', () => {
       await userService.getAvatar(userId, responseMock);
       expect(responseMock.json).toHaveBeenCalledWith({
         message: 'Image retrieved successfully',
-        avatar: mockAvatarDecodedData,
+        avatar: getBase64Url(mockAvatarDecodedData),
       });
     });
 
@@ -194,7 +195,7 @@ describe('UserService', () => {
       const userId = '456';
       const mockFetchedAvatarUrl = 'http://example.com/avatar.jpg';
       const mockAvatarData = Buffer.from('new-avatar-data');
-      const mockBase64Avatar = mockAvatarData.toString('base64');
+      const mockBase64Avatar = getBase64Url(mockAvatarData.toString('base64'));
 
       const responseMock = {
         json: jest.fn(),

@@ -12,6 +12,8 @@ import { MailerService } from '@nestjs-modules/mailer';
 import { config } from 'dotenv';
 import { createUserSchema } from './validator/user.validator';
 import { ClientProxy } from '@nestjs/microservices/client';
+import { getBase64Url } from '../utils/helper';
+
 config();
 
 const reqResBaseUrl = process.env.REQ_RES_BASE_URL;
@@ -90,7 +92,7 @@ export class UserService {
 
         return res.json({
           message: 'Image retrieved successfully',
-          avatar: decodedData,
+          avatar: getBase64Url(decodedData),
         });
       }
 
@@ -115,7 +117,7 @@ export class UserService {
         await this.userModel.create({ userId, avatar: base64Hash });
         return res.json({
           message: 'Image retrieved successfully',
-          avatar: base64Encoded,
+          avatar: getBase64Url(base64Encoded),
         });
       }
     } catch (error) {
