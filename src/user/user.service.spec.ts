@@ -226,7 +226,7 @@ describe('UserService', () => {
       }); // Ensure the response is correct
     });
 
-    it('Should return if avatar for the given user if axios returned an error', async () => {
+    it('Should return an error if avatar for the given user on axios request returned an error', async () => {
       const userId = '1-wrong-id';
       const responseMock = {
         status: jest.fn().mockReturnThis(),
@@ -245,6 +245,23 @@ describe('UserService', () => {
       // Verify the call to status
       expect(responseMock.status).toHaveBeenCalledWith(404);
       // Verify the call to json
+      expect(responseMock.json).toHaveBeenCalledWith({
+        message: 'Unable to retrieve avatar for given user Id',
+      });
+    });
+
+    it('Should return an error if the avatar is not downloaded as a plain file into the file system', async () => {
+      const userId = '1';
+      const responseMock = {
+        status: jest.fn().mockReturnThis(),
+        json: jest.fn(),
+      };
+
+      (axios as any).get.mockRejectedValue({});
+
+      await userService.getAvatar(userId, responseMock as any);
+
+      expect(responseMock.status).toHaveBeenCalledWith(404);
       expect(responseMock.json).toHaveBeenCalledWith({
         message: 'Unable to retrieve avatar for given user Id',
       });
