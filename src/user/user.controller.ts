@@ -13,7 +13,7 @@ import { Response } from 'express';
 
 @Controller('api/')
 export class UserController {
-  constructor(private readonly userService: UserService) { }
+  constructor(private readonly userService: UserService) {}
 
   // create user
   @Post('users')

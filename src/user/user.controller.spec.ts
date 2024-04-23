@@ -4,7 +4,7 @@ import { UserService } from './user.service';
 import { UserDto } from './dto/user.dto';
 
 class MockUserService {
-  async create(userDto: UserDto, res: any) {
+  async create() {
     return true;
   }
 }
@@ -33,12 +33,12 @@ describe('UserController', () => {
   });
 
   it('should call userService', () => {
-    const userDto: UserDto = { 
+    const userDto: UserDto = {
       userId: '1',
       first_name: 'John',
       last_name: 'Doe',
       email: 'john@example.com',
-      avatar: 'avatar_url'
+      avatar: 'avatar_url',
     };
     const response = {
       send: jest.fn(),
