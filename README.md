@@ -54,6 +54,7 @@ Unit tests are written for the provided solution in *./src/user/. Run the follow
 # unit tests
 $ npm run test
 ```
+![Unit Tests](./references/test.png)
 
 Run the following command to check the test coverage:
 
@@ -62,7 +63,7 @@ Run the following command to check the test coverage:
 $ npm run test:cov
 ```
 
-![Unit Tests Coverage](./coverage/coverage.png)
+![Unit Tests Coverage](./references/cov.png)
 
 ## Documentation
 
@@ -94,6 +95,19 @@ It removes the file from the FileSystem storage and the entry from db.
 
 [API Documentation Link](https://documenter.getpostman.com/view/29288262/2sA3Bn4rkD)
 
+### References of Running Solution
+
+This app passes eslint. Run the following command to check:
+
+```bash
+# eslint
+$ npm run lint
+```
+
+![Eslint](./references/lint.png)
+
+[Video Ref. of Running Solution of Tasks](https://www.loom.com/share/e4eb863f89ab4549bfe29ea5ed0f774b?sid=ed6ecb9c-9ac0-49dd-9afa-dc45153f0401)
+
 ### Error Handling
 
 - The error messages returned by the API are iformative. 
@@ -110,7 +124,6 @@ It removes the file from the FileSystem storage and the entry from db.
 
 - The _./src/main.ts_ is the starting point of this app.
 - Only the required dependencies and devDepndencies are installed in the app.  
-- This app passes eslint.
 - The project builds and can start.
 - All the endpoints can be requested from any API tester like [Postman](https://www.postman.com/).
 - Requested data is stored in DB and a Rabbit MQ event is emitted.
