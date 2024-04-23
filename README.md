@@ -106,6 +106,16 @@ $ npm run lint
 
 ![Eslint](./references/lint.png)
 
+This app builds app successfully. Run the following command to check:
+
+```bash
+# eslint
+$ npm run build
+```
+
+![Build](./references/build.png)
+
+
 [Video Ref. of Running Solution of Tasks](https://www.loom.com/share/e4eb863f89ab4549bfe29ea5ed0f774b?sid=ed6ecb9c-9ac0-49dd-9afa-dc45153f0401)
 
 ### Error Handling
