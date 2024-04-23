@@ -24,7 +24,7 @@ export class UserService {
     private userModel: Model<User>,
     private readonly mailservice: MailerService,
     @Inject('USER_CREATION') private readonly client: ClientProxy,
-  ) { }
+  ) {}
 
   async create(payload: UserDto, res) {
     try {
